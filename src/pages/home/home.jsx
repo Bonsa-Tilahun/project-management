@@ -23,6 +23,8 @@ class HomePage extends Component{
         this.updateProjectsView = this.updateProjectsView.bind(this)
         this.handleOpenProject = this.handleOpenProject.bind(this)
         this.handleBackOp = this.handleBackOp.bind(this)
+        this.handleAddCollab = this.handleAddCollab.bind(this)
+    
     }
     
     componentDidMount(){
@@ -43,6 +45,14 @@ class HomePage extends Component{
     handleTogglePopUp(){
         this.setState({
             togglePopUp: !this.state.togglePopUp
+        })
+    }
+
+    handleAddCollab(userId, collabUserList){
+        Axios.post(`/api/collaborators/${userId}`, {collabUserList}).then(res =>{
+            this.setState({
+                colabrationProj: res.data
+            })
         })
     }
 
@@ -69,10 +79,15 @@ class HomePage extends Component{
         const projs = this.state.projects.map(project => (
             <ProjectCard key={i++} handleOpenProject={this.handleOpenProject} project={project}/>
         ))
-        console.log()
+        console.log("projs: ", projs)
         return(
             <section className='homePage-container'>
-                {this.state.projSelected? <ProjectPage handleBackOp={this.handleBackOp} colabs={this.state.colabrationProj} userId={this.props.id} proj={this.state.currentProject}/>:
+                {this.state.projSelected? <ProjectPage 
+                                                handleBackOp={this.handleBackOp} 
+                                                colabs={this.state.colabrationProj} 
+                                                userId={this.props.id} 
+                                                proj={this.state.currentProject}
+                                                handleAddCollab={this.handleAddCollab}/>:
                 (
                     <div>
                         <h1>My Projects</h1>

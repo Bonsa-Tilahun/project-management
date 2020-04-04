@@ -23,16 +23,16 @@ class ProjectDetails extends Component {
     render(){
         return (
             <section className='project-summary'>
-                <h1>{this.props.proj.projName}</h1>
+                <h1 className='sec-title'>{this.props.proj.projName}</h1>
                 <div className='project-break-down'>
                     <div className='project-detail'>
-                        <p>{`Start Date: ${this.props.proj.startDate}`}</p>
-                        <p>{`End Date: ${this.props.proj.endDate}`}</p>
+                        <p className='sec-detail'>{`Start Date: ${this.props.proj.startDate}`}</p>
+                        <p className='sec-detail'>{`End Date: ${this.props.proj.endDate}`}</p>
                     </div>
                     <div className='project-action'>
-                        <button>EDIT</button>
-                        <button>MARK AS COMPLETE</button>
-                        <button>DELETE</button>
+                        <button className='action-btn yellow'>EDIT</button>
+                        <button className='action-btn green'>MARK AS COMPLETE</button>
+                        <button className='action-btn red'>DELETE</button>
                     </div>
                 </div>
             </section>

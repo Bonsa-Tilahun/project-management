@@ -7,8 +7,9 @@ const app = express()
 app.use(express.json())
 app.listen(PORT, () => console.log(`Server up and running on port ${PORT}`))
     //Users endpoint
-app.post('/api/users', userCrtl.createUser)
-app.get('/api/users', userCrtl.getUser)
+app.post('/api/users', userCrtl.createUser) //used when creating user
+app.get('/api/users/user', userCrtl.getUser) //used when loggin in
+
 
 //Projects endpoint
 app.post('/api/projects', projCtrl.createProject)

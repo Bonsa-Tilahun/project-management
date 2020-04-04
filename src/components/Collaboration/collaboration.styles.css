@@ -1,0 +1,26 @@
+.collab-container {
+    width: 100%;
+    height: 12vh;
+    /* background-color: lightblue; */
+}
+
+.collab-list {
+    width: 80%;
+    height: 100%;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.placeHolder-Info {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(250, 250, 210, 1) 50%, rgba(255, 255, 251, 1) 100%);
+    padding: 4vh;
+}
+
+.addCollabBtn {
+    height: 80%;
+}

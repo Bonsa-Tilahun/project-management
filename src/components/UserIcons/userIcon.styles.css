@@ -1,0 +1,6 @@
+.userIcon-container {
+    margin-left: 10px;
+    border-radius: 50%;
+    border: 2px solid #ff9eb9;
+    overflow: hidden;
+}

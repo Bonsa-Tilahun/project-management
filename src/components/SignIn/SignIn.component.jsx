@@ -21,7 +21,7 @@ class SignIn extends Component{
             password: this.state.password
         }
         console.log(newUser)
-        axios.get(`/api/users?userName=${this.state.userName}&password=${this.state.password}`).then(res =>{
+        axios.get(`/api/users/user?userName=${this.state.userName}&password=${this.state.password}`).then(res =>{
             this.props.logUserIn(res.data)
         }).catch((err) => alert(`There was a problem logging in: ${err}`))
     }
