@@ -1,0 +1,44 @@
+.signIn-container {
+    height: 35vh;
+    width: 30vw;
+}
+
+.signIn-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+label {
+    margin: 10px 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+input {
+    border: none;
+    border-bottom: pink solid 2px;
+    height: 3vh;
+    width: 100%;
+    outline: none;
+    letter-spacing: 2px;
+    background: transparent;
+}
+
+.submitBtn {
+    margin-top: 10px;
+    width: 100%;
+    height: 7vh;
+    border: none;
+    font-size: 3rem;
+    letter-spacing: 3px;
+    font-weight: 100;
+    border-radius: 4px;
+    background-color: lightpink;
+    cursor: pointer;
+}
+
+span {
+    cursor: pointer;
+}

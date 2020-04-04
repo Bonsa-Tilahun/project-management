@@ -1,0 +1,15 @@
+.auth-container {
+    background-image: url('../../assets/signinImg.svg');
+    background-size: cover;
+    height: 90vh;
+    width: 100%;
+    background-color: white;
+    background-position: center;
+    position: relative;
+}
+
+.signInUp {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+}

@@ -1,0 +1,25 @@
+.header-container {
+    height: 10vh;
+    width: 100%;
+    padding: 6px 20px;
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-loginInfo {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 50%;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.loginInfo-sub {
+    margin-left: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}

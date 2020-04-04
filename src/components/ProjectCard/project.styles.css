@@ -1,0 +1,38 @@
+.card-component {
+    height: 30vh;
+    width: 15vw;
+    min-width: 15vw;
+    background-color: wheat;
+    margin-left: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    padding: 5px;
+    box-shadow: 0px 0px 7px 2px rgba(134, 92, 215, 1);
+}
+
+.projName {
+    height: 25%;
+    width: 100%;
+}
+
+.card-component h4 {
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+}
+
+.projName h3 {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.proj-details {
+    height: 70%;
+    width: 100%;
+}
+
+.proj-details p {
+    font-size: 1.2rem;
+}
