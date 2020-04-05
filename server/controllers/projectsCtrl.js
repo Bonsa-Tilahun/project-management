@@ -5,14 +5,16 @@ let id = 0
 module.exports = {
     createProject: (req, res) => {
         console.log(req.body)
-        const { userId, projName, description, startDate, endDate } = req.body
+        const { userId, projName, description, startDate, endDate, projectTaskList } = req.body
         const index = users.findIndex(user => user.id === +userId)
         const newProject = {
             id,
             projName,
             description,
             startDate,
-            endDate
+            endDate,
+            projectTaskList,
+            status: false
         }
         projects.push(newProject)
         users[index].projects.push(id)

@@ -24,3 +24,13 @@
 .addCollabBtn {
     height: 80%;
 }
+
+.callab-users {
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 10px 0;
+}

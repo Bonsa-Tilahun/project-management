@@ -10,7 +10,8 @@ class ProjectPopUp extends Component{
             projName:'',
             description:'',
             startDate: Date.now,
-            endDate: Date.now
+            endDate: Date.now,
+            projectTaskList:[]
         }
         this.handleChange = this.handleChange.bind(this)
         this.saveProject = this.saveProject.bind(this)
@@ -29,7 +30,8 @@ class ProjectPopUp extends Component{
             projName:this.state.projName,
             description:this.state.description ,
             startDate:this.state.startDate ,
-            endDate: this.state.endDate
+            endDate: this.state.endDate,
+            projectTaskList:[]
         }
         console.log(newProj)
         Axios.post('/api/projects', newProj).then(res =>{
@@ -42,20 +44,23 @@ class ProjectPopUp extends Component{
         return (  
           <div className='popup'>  
               <div className='popup_inner'>  
-                  <h1>Create your Project</h1> 
-                  <label htmlFor="name">Name of Project
+                    <h1>Create your Project</h1> 
+                    <label htmlFor="name">Name of Project
                       <input type="text" name="projName" id="name" onChange={this.handleChange}/>    
-                  </label> 
-                  <label htmlFor="description"> Project Description
+                    </label> 
+                    <label htmlFor="description"> Project Description
                       <input type="textarea" name="description" id="description" onChange={this.handleChange}/>    
-                  </label> 
-                  <label htmlFor="startDate">Start Date
+                    </label> 
+                    <label htmlFor="startDate">Start Date
                       <input type="date" name="startDate" id="startDate" onChange={this.handleChange}/>    
-                  </label> 
-                  <label htmlFor="endDate">End Date
+                    </label> 
+                    <label htmlFor="endDate">End Date
                       <input type="date" name="endDate" id="endDate" onChange={this.handleChange}/>    
-                  </label> 
-                  <button className='addbtn' onClick={this.saveProject}>Add Project</button>  
+                    </label>
+                    <div className='action-button-section'>
+                        <button className='action-btn green' onClick={this.saveProject}>ADD PROJECT</button>  
+                        <button className='action-btn red' onClick={()=>this.props.handleTogglePopUp()}>CANCLE</button>  
+                    </div> 
               </div>  
           </div>  
         );  

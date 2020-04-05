@@ -48,8 +48,13 @@ class HomePage extends Component{
         })
     }
 
-    handleAddCollab(userId, collabUserList){
-        Axios.post(`/api/collaborators/${userId}`, {collabUserList}).then(res =>{
+    handleAddCollab(userId, projId, collabUserList){
+        console.log("hanlde add collab bt: ", userId, collabUserList)
+        const projIndex = this.state.colabrationProj.findIndex(collabs => collabs.projId === projId)
+
+        console.log("proj index", projIndex)
+        Axios.post(`/api/collaborators/${userId}`, {projId,collabUserList}).then(res =>{
+            console.log("hanlde add collab bt: ", res.data)
             this.setState({
                 colabrationProj: res.data
             })
@@ -87,7 +92,8 @@ class HomePage extends Component{
                                                 colabs={this.state.colabrationProj} 
                                                 userId={this.props.id} 
                                                 proj={this.state.currentProject}
-                                                handleAddCollab={this.handleAddCollab}/>:
+                                                handleAddCollab={this.handleAddCollab}
+                                            />:
                 (
                     <div>
                         <h1>My Projects</h1>

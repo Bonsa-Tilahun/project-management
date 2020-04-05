@@ -1,0 +1,18 @@
+.tasks-column {
+    width: 30%;
+    height: 100%;
+    background-color: bisque;
+    position: relative;
+    overflow-y: scroll;
+    border-radius: 10px;
+}
+
+.tasks-column-title {
+    height: 10%;
+    width: 100%;
+    padding-top: 4%;
+    background-color: #ebecf0;
+    font-size: 1.2rem;
+    font-weight: bolder;
+    /* position: absolute; */
+}

@@ -1,6 +1,36 @@
 .userIcon-container {
-    margin-left: 10px;
+    /* margin-left: 10px; */
     border-radius: 50%;
     border: 2px solid #ff9eb9;
     overflow: hidden;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+    z-index: 1;
+    cursor: pointer;
 }
+
+.userIcon-container:hover {
+    top: -10px
+}
+
+.icon-container {
+    margin-left: 10px;
+    height: 100%;
+    position: relative;
+}
+
+.icon-userName {
+    font-size: .75rem;
+    /* display: none; */
+    position: absolute;
+    bottom: 0;
+    left: 30%;
+    /* z-index: -1; */
+    /* transition: top ease 0.5s; */
+}
+
+
+/* .icon-userName:hover {
+    display: inline;
+} */

@@ -31,5 +31,22 @@ module.exports = {
             return res.status(403).send('Password or userName incorrect')
         }
         res.status(200).send(usersTable[index])
+    },
+
+    getUsers: (req, res) => {
+        const { userName } = req.query
+        console.log(userName)
+        const matchedUsers = []
+        for (const user of usersTable) {
+            console.log("users userName", user.userName)
+            if (user.userName.includes(userName)) {
+                console.log(user)
+                matchedUsers.push(user)
+            }
+        }
+        // const matchedUsers = usersTable.filter(user => user.userName.includes(req.query))
+        // console.log(matchedUsers)
+        res.status(200).send(matchedUsers)
+
     }
 }
