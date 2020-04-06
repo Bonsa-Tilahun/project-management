@@ -15,9 +15,11 @@ app.get('/api/users', userCrtl.getUsers) //used to return user search results
 
 
 //Projects endpoint
-app.post('/api/projects', projCtrl.createProject)
-app.get('/api/projects/:id', projCtrl.getAllProjects)
-app.get('/api/projects/project/:id', projCtrl.getSingleProj)
+app.post('/api/projects', projCtrl.createProject) //used for creating project
+app.get('/api/projects/:id', projCtrl.getAllProjects) //given userId, retrieve all of their projects
+app.get('/api/projects/project/:id', projCtrl.getSingleProj) //given projId, retrieve the project
+app.put('/api/projects/project/:id', projCtrl.updateProject) //given projId, updates the project
+app.delete('/api/projects/project/', projCtrl.deleteProject) //given projId, delete project
 
 //collaboration endpoint
 app.post('/api/collaborators/:userId', collabCtrl.addCollaborators) //used to add colloborators to project

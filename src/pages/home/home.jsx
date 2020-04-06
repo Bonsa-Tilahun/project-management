@@ -7,6 +7,7 @@ import './home.css'
 import Axios from 'axios'
 import ProjectCard from '../../components/ProjectCard/ProjectCard.component'
 import ProjectPage from '../project/project'
+import DeletedPopUp from '../../components/popup/DeletedPopUp.component'
 
 class HomePage extends Component{
     constructor(props){
@@ -17,13 +18,18 @@ class HomePage extends Component{
             projects: this.props.project,
             colabrationProj: this.props.colabs,
             projSelected: false,
-            currentProject:null
+            currentProject:null,
+            proj:null,
+            deleted:false
         }
         this.handleTogglePopUp = this.handleTogglePopUp.bind(this)
         this.updateProjectsView = this.updateProjectsView.bind(this)
         this.handleOpenProject = this.handleOpenProject.bind(this)
         this.handleBackOp = this.handleBackOp.bind(this)
         this.handleAddCollab = this.handleAddCollab.bind(this)
+        this.componentDidMount = this.componentDidMount.bind(this)
+        this.toggleDeletedFlag = this.toggleDeletedFlag.bind(this)
+        this.resetDeletedFlag = this.resetDeletedFlag.bind(this)
     
     }
     
@@ -42,10 +48,22 @@ class HomePage extends Component{
         })
     }
 
-    handleTogglePopUp(){
+    toggleDeletedFlag(){
         this.setState({
-            togglePopUp: !this.state.togglePopUp
+            deleted: true
         })
+        setTimeout(this.resetDeletedFlag, 3000)
+    }
+    resetDeletedFlag(){
+        this.setState({
+            deleted: false
+        })
+        this.componentDidMount()
+    }
+    handleTogglePopUp(){
+            this.setState({
+                togglePopUp: !this.state.togglePopUp
+            })
     }
 
     handleAddCollab(userId, projId, collabUserList){
@@ -93,18 +111,27 @@ class HomePage extends Component{
                                                 userId={this.props.id} 
                                                 proj={this.state.currentProject}
                                                 handleAddCollab={this.handleAddCollab}
-                                            />:
+                                                handleTogglePopUp={this.handleTogglePopUp}
+                                                togglePopUp={this.state.togglePopUp}
+                                                refreshFn = {this.componentDidMount}
+                                                toggleDeletedFlag={this.toggleDeletedFlag}
+                                                
+                                                />
+                                                : 
+                                                this.state.deleted?
+                                                <DeletedPopUp userId={this.props.id}/> :
+                                                
                 (
                     <div>
                         <h1>My Projects</h1>
                         <img onClick={this.handleTogglePopUp} className='project-add' src={AddBtn} alt="Add project"/>
                         {this.state.togglePopUp ?
-                        <ProjectPopUp updateProjectsView={this.updateProjectsView} id={this.props.id} handleTogglePopUp={this.handleTogglePopUp}/>: null}
+                        <ProjectPopUp proj={this.state.proj}  updateProjectsView={this.updateProjectsView} id={this.props.id} handleTogglePopUp={this.handleTogglePopUp}/>: null}
                         <div className='myProjects-list'>
                             {projs}
                         </div>
                     </div>
-                )}     
+                )}
             </section>
         )
     }
