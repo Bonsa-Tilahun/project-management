@@ -5,9 +5,11 @@ import './taskCard.styles.css'
 const TaskCard = (props) =>{
     return(
         <section onClick={()=>props.handleToggleEditPopUp(props.task)} className='task-display'>
-            <div>
+            <div className='task-title'>
                 {props.task.taskTitle}
-                hello
+            </div>
+            <div className='task-desc'>
+                {props.task.taskDesctription}
             </div>
         </section>
     )

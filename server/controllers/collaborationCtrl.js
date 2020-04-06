@@ -5,6 +5,7 @@ module.exports = {
     addCollaborators: (req, res) => {
         const { userId } = req.params
         const { projId, collabUserList } = req.body
+        console.log("my incoming collab user: ", collabUserList)
         const userIndex = usersTable.findIndex(user => user.id === parseInt(userId))
         const collabListToUpdated = usersTable[userIndex].colabrationProj
             //if the project already has a collab members, we add to them else we start a new colab list
@@ -31,6 +32,10 @@ module.exports = {
                 // console.log('my return val: ', collabListToUpdated[projectCollabIndex].collabUserList)
 
         }
+        collabUserList.forEach(user => {
+            const userIndex = usersTable.findIndex(usr => usr.id === user.id)
+            usersTable[userIndex].projects.push(projId)
+        });
 
     },
     getCollaborators: (req, res) => {
@@ -59,5 +64,9 @@ module.exports = {
         }
         usersTable[userIndex].colabrationProj[projectIndex].collabUserList.splice(tobeDeleteUserIndex, 1)
         res.status(200).send([usersTable[userIndex].colabrationProj[projectIndex]])
+
+        const userIndextoRemoveProject = usersTable.findIndex(user => user.id === +tobeDeleteUserId)
+        const projToDeleteIndex = usersTable[userIndextoRemoveProject].projects.findIndex(projId => +projId)
+        usersTable[userIndextoRemoveProject].projects.splice(projToDeleteIndex, 1)
     }
 }
