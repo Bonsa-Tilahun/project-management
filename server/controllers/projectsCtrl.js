@@ -56,7 +56,7 @@ module.exports = {
         const { userId, projId } = req.query
         const projIndex = projects.findIndex(project => project.id === +projId)
         const userIndex = users.findIndex(user => user.id === +userId)
-        console.log(userIndex, projIndex)
+            // console.log(userIndex, projIndex)
         if (projIndex === -1 || userIndex === -1) {
             return res.status(404).send("Unable to find project to delete")
         }

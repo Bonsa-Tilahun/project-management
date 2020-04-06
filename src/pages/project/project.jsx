@@ -17,7 +17,6 @@ class ProjectPage extends Component{
         }
         this.handleUpdatProject = this.handleUpdatProject.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
-        this.refreshAndGoBack = this.refreshAndGoBack.bind(this)
     }
 
     handleDelete(id){
@@ -41,6 +40,7 @@ class ProjectPage extends Component{
         // this.props.refreshFn()
     }
     render(){
+
         return (
             <div className='projectPage-containe'>
                 {this.props.togglePopUp ?
@@ -57,17 +57,15 @@ class ProjectPage extends Component{
                     userId={this.props.userId}
                     handleAddCollab={this.props.handleAddCollab}
                     projId = {this.state.currentProject.id}
+                    refreshFn = {this.props.refreshFn}
                 />
                 <ProjectProgress 
                     userId={this.props.userId}
                     proj={this.state.currentProject}
-                    />
-            </div>
-                    // {/* // <div>
-                    // //     <img src={'https://robohash.org/' + this.props.userId + '?set=set2&size=200x200'} alt="UserIcon" alt=""/>
-                    // //     <h1>YOU HAVE DELETED YOUR PROJECT</h1>
-                    // // </div> */}
+                />
 
+            </div>
+       
         )
     }
 }

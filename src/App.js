@@ -19,12 +19,10 @@ class App extends Component {
   }
 
   logUserIn(user){
-    console.log(this.state)
     this.setState({
       loggedIn: !this.state.loggedIn,
       ...user
     })
-    console.log(this.state)
   }
 
   render(){

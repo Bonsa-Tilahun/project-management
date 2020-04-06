@@ -4,7 +4,7 @@ import './project.styles.css'
 
 const ProjectCard = (props) => {
     return(
-        <div onClick={()=>props.handleOpenProject(props.project.id)} className='card-component'>
+        <div onClick={()=>props.handleOpenProject(props.project.id)} className={`card-component ${props.project.status ? 'completed-box-shadow':''}`}>
             <div className='projName'>
                 <h4>Project Name:</h4>
                 <h3>{props.project.projName}</h3>

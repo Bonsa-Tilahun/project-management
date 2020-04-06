@@ -14,5 +14,13 @@
     background-color: #ebecf0;
     font-size: 1.2rem;
     font-weight: bolder;
+    position: relative;
     /* position: absolute; */
+}
+
+.add-task-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
 }

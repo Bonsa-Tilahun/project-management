@@ -48,7 +48,7 @@ class AddCollabPopUp extends Component{
         this.props.handleTogglePopUp()
     }
     handleAddCollabsBtn(){
-        this.props.handleAddCollab(this.props.userId, this.props.projId, this.state.selectedUsers)
+        this.props.handleAddCollabbb(this.props.userId, this.props.projId, this.state.selectedUsers)
         this.props.handleTogglePopUp()
     }
 

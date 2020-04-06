@@ -2,6 +2,7 @@ const express = require('express')
 const userCrtl = require('./controllers/userCtrl')
 const projCtrl = require('./controllers/projectsCtrl')
 const collabCtrl = require('./controllers/collaborationCtrl')
+const tasksCrtl = require('./controllers/taskCtrl')
 
 const PORT = 4005
 
@@ -11,6 +12,7 @@ app.listen(PORT, () => console.log(`Server up and running on port ${PORT}`))
     //Users endpoint
 app.post('/api/users', userCrtl.createUser) //used when creating user
 app.get('/api/users/user', userCrtl.getUser) //used when loggin in
+app.get('/api/users/user/:id', userCrtl.getSingleUser) //used when viewing collaborators
 app.get('/api/users', userCrtl.getUsers) //used to return user search results
 
 
@@ -24,3 +26,9 @@ app.delete('/api/projects/project/', projCtrl.deleteProject) //given projId, del
 //collaboration endpoint
 app.post('/api/collaborators/:userId', collabCtrl.addCollaborators) //used to add colloborators to project
 app.get('/api/collaborators', collabCtrl.getCollaborators) //used to add colloborators to project
+app.delete('/api/collaborators', collabCtrl.deleteCollaborator) //remove collaborator from project
+
+//Tasks endpoints
+app.post('/api/tasks', tasksCrtl.createTasks) //create task for a given user and project
+app.put('/api/tasks', tasksCrtl.updateTasks) //create task for a given user and project
+app.delete('/api/tasks', tasksCrtl.deleteTask) //delete task for a given user and project

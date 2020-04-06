@@ -20,10 +20,8 @@ module.exports = {
         res.status(403).send('User already exists')
     },
     getUser: (req, res) => {
-        console.log(req.query)
         const { userName, password } = req.query
         const index = usersTable.findIndex(user => user.userName === userName)
-        console.log(index)
         if (index === -1) {
             return res.status(404).send('User not found: Please create an account')
         }
@@ -35,12 +33,10 @@ module.exports = {
 
     getUsers: (req, res) => {
         const { userName } = req.query
-        console.log(userName)
+            // console.log(userName)
         const matchedUsers = []
         for (const user of usersTable) {
-            console.log("users userName", user.userName)
             if (user.userName.includes(userName)) {
-                console.log(user)
                 matchedUsers.push(user)
             }
         }
@@ -48,5 +44,11 @@ module.exports = {
         // console.log(matchedUsers)
         res.status(200).send(matchedUsers)
 
+    },
+    getSingleUser: (req, res) => {
+        const { id } = req.params
+        const userFound = usersTable.find(user => user.id === +id)
+            // console.log(userFound)
+        res.status(200).send(userFound)
     }
 }

@@ -35,7 +35,6 @@ class HomePage extends Component{
     
     componentDidMount(){
         Axios.get(`/api/projects/${this.props.id}`).then(res => {
-            console.log("oncomponentdidmount: ",res.data)
             this.setState({
                 projects: res.data
             })
@@ -67,12 +66,10 @@ class HomePage extends Component{
     }
 
     handleAddCollab(userId, projId, collabUserList){
-        console.log("hanlde add collab bt: ", userId, collabUserList)
         const projIndex = this.state.colabrationProj.findIndex(collabs => collabs.projId === projId)
 
         console.log("proj index", projIndex)
         Axios.post(`/api/collaborators/${userId}`, {projId,collabUserList}).then(res =>{
-            console.log("hanlde add collab bt: ", res.data)
             this.setState({
                 colabrationProj: res.data
             })
@@ -86,9 +83,7 @@ class HomePage extends Component{
     }
 
     handleOpenProject(projId){
-        console.log("projId: ", projId)
         Axios.get(`/api/projects/project/${projId}`).then(res =>{
-            console.log(res.data)
             this.setState({
                 currentProject: res.data,
                 projSelected: !this.state.projSelected
@@ -102,7 +97,6 @@ class HomePage extends Component{
         const projs = this.state.projects.map(project => (
             <ProjectCard key={i++} handleOpenProject={this.handleOpenProject} project={project}/>
         ))
-        console.log("projs: ", projs)
         return(
             <section className='homePage-container'>
                 {this.state.projSelected? <ProjectPage 

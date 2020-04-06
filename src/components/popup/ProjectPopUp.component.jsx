@@ -6,7 +6,7 @@ import Axios from 'axios'
 class ProjectPopUp extends Component{
     constructor(props){
         super(props)
-        console.log("project popup props: ", this.props.proj)
+
         this.state ={
             projName: ( this.props.proj === null) ?'': this.props.proj.projName,
             description: ( this.props.proj === null) ?'': this.props.proj.description,
@@ -27,7 +27,6 @@ class ProjectPopUp extends Component{
     }
 
     updateProject(){
-      console.log("i was triggered?")
       const projId = this.props.proj.id
       const updatedProj={
         id:projId,
@@ -38,13 +37,11 @@ class ProjectPopUp extends Component{
         projectTaskList:this.state.projectTaskList,
         status: this.state.status
       }
-      console.log("i got to the update proj")
       this.props.handleUpdatProject(updatedProj)
       this.props.handleTogglePopUp()
     }
 
     saveProject(){
-      console.log("i waz also triggered???")
         const userId = this.props.id
         const newProj={
             userId: userId,
@@ -55,7 +52,6 @@ class ProjectPopUp extends Component{
             projectTaskList:[],
             status: false
         }
-        console.log(newProj)
         Axios.post('/api/projects', newProj).then(res =>{
             this.props.updateProjectsView(res.data)
             this.props.handleTogglePopUp()
@@ -63,13 +59,11 @@ class ProjectPopUp extends Component{
     }
     
     render(){
-      console.log("Hello, this is the proj: ", this.props.proj)
         return (  
           <div className='popup'>  
           {this.state.editMode ? 
               <div className='popup_inner'>  
                     <h1>Create your Project</h1> 
-                    Thiiiiiiisss is the edit mode
                     <label htmlFor="name">Name of Project
                       <input 
                         value={this.state.projName}
